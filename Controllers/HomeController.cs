@@ -6,18 +6,33 @@ namespace Mission08_group4_09.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        //private TaskClassContext _context;
+
+        //public HomeController(TaskClassContext task)
+        //{
+        //    _context = task;
+        //}
 
         public IActionResult Index()
         {
+            return View("Quadrants");
+        }
+        public IActionResult Task()
+        {
             return View();
         }
-        
+        //public IActionResult Quadrants()
+        //{
+        //    return View();
+        //}
+
         public IActionResult Privacy()
         {
             return View();
