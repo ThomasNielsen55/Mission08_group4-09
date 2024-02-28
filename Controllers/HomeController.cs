@@ -17,7 +17,7 @@ namespace Mission08_group4_09.Controllers
         {
             return View();
         }
-
+        
         public IActionResult Privacy()
         {
             return View();
