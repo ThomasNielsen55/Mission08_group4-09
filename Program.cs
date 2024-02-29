@@ -1,8 +1,17 @@
+using Mission08_group4_09.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.Sqlite;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<Mission8Context>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:Connection"]);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

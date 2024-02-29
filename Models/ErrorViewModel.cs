@@ -1,4 +1,4 @@
-namespace Mission08_group4_09.Models
+﻿namespace Mission08_group4_09.Models
 {
     public class ErrorViewModel
     {
