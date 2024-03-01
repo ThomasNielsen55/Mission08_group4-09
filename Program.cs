@@ -8,10 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<Mission8Context>(options =>
+builder.Services.AddDbContext<HabitContext>(options =>
 {
     options.UseSqlite(builder.Configuration["ConnectionStrings:Connection"]);
 });
+builder.Services.AddScoped<ITaskRepository, EFTaskRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
