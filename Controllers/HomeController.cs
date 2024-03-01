@@ -73,7 +73,7 @@ namespace Mission08_group4_09.Controllers
         [HttpPost]
         public IActionResult Delete(ToDoList record)
         {
-            _repo.RemoveFromDoList(record);
+            _repo.RemoveToDoList(record);
 
             return RedirectToAction("Quadrants");
         }
