@@ -9,33 +9,12 @@
     <link rel="stylesheet" href="~/Mission08_group4_09.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="border-bottom box-shadow" align="center">
-    <a class="" asp-area="" asp-controller="Home" asp-action="Index">
-            <img src="~/img/mission08.png"  width="200"/>
-        <br />
-            <img src="~/img/num4.jpg" width="50" /><img src="~/img/groupnine.png" width="200" />
-    </a>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-gray border-bottom box-shadow">
+        <img src="~/img/mission08.png" width="200" />
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <a class="btn btn-outline-primary" asp-area="" asp-controller="Home" asp-action="AddEdit">Add an Item</a>
     </div>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <row class="navbar-nav flex-grow-1">
-                        <col class="col-2 nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </col>
-                        <col class="col-2 nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddEdit">Add an Item</a>
-                        </col>
-                    </row>
-                </div>
-            </div>
-        </nav>
-    </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -46,7 +25,10 @@
         <div class="container">
             &copy; 2024 - BiggestBossDawgs - <a asp-area="" asp-controller="Home" asp-action="AddEdit">Add an Item</a>
         </div>
+        <img src="~/img/bottom left hulk.jpg" align="left" width="200" />
+        <img src="~/img/bottom right hulk.jpg" align="right" width="200" />
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

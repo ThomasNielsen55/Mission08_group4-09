@@ -5,8 +5,9 @@
 }
 
 @model ToDoList
-
-<form method="post">
+<div border ="solid">
+    <div border="10px solid #000000" margin="100px" padding="25px" background-color="lightblue">
+    <form method="post" >
     <input asp-for="TaskId" type="hidden" />
 
     <label asp-for="Task">Task Name:</label>
@@ -19,19 +20,22 @@
     <label asp-for="Quadrant">Quadrant Number:</label>
     <input type="number" asp-for="Quadrant" required min="1" max="4" />
     <br />
-    @* <select asp-for="CategoryId">
+    <select asp-for="CategoryId">
         <option value="">Select A Category:</option>
         @foreach (Category c in ViewBag.Categories)
         {
             <option value="@c.CategoryId">@c.Categories</option>
         }
     </select>
-    <br /> *@
+    <br />
     <label asp-for="Completed">Completed?</label>
     <select asp-for="Completed">
         <option value=null>-Select-</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
+    <br />
     <button type="submit">Add Task</button>
 </form>
+</div>
+</div>
