@@ -9,7 +9,7 @@ public partial class ToDoList
 
     public string Task { get; set; } = null!;
 
-    public int? DueDate { get; set; }
+    public string? DueDate { get; set; }
 
     public int Quadrant { get; set; }
 
