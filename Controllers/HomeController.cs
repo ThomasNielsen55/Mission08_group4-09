@@ -8,11 +8,11 @@ namespace Mission08_group4_09.Controllers
     public class HomeController : Controller
     {
 
-        private HabitContext _context;
+        private ITaskRepository _repo;
 
-        public HomeController(HabitContext task)
+        public HomeController(ITaskRepository task)
         {
-            _context = task;
+            _repo = task;
         }
 
         public IActionResult Index()
@@ -24,7 +24,7 @@ namespace Mission08_group4_09.Controllers
         [HttpGet]
         public IActionResult AddEdit()
         {
-            ViewBag.categories = _context.Categories.ToList();
+            ViewBag.categories = _repo.Categories.ToList();
 
             return View("AddEdit", new ToDoList());
         }
@@ -33,32 +33,25 @@ namespace Mission08_group4_09.Controllers
         {
             if (t.CategoryId == null)
             {
-                ViewBag.categories = _context.Categories.ToList();
+                ViewBag.categories = _repo.Categories.ToList();
                 return View(t);
             }
             if (ModelState.IsValid)
             {
-                _context.ToDoLists.Add(t);
-                _context.SaveChanges();
+                _repo.AddToDoList(t);
 
                 return View("Quadrants");
             }
             else
             {
-                ViewBag.categories = _context.Categories.ToList();
+                ViewBag.categories = _repo.Categories.ToList();
                 return View(t);
             }
-        }
-        public IActionResult ShowMovies()
-        {
-            var items = _context.ToDoLists.Include("Category").ToList();
-
-            return View(items);
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var record = _context.ToDoLists
+            var record = _repo.ToDoLists
                 .Single(x => x.TaskId == id);
 
             return View("AddEdit", record);
@@ -66,14 +59,13 @@ namespace Mission08_group4_09.Controllers
         [HttpPost]
         public IActionResult Edit(ToDoList updated)
         {
-            _context.Update(updated);
-            _context.SaveChanges();
+            _repo.UpdateToDoList(updated);
             return RedirectToAction("Quadrants");
         }
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var record = _context.ToDoLists
+            var record = _repo.ToDoLists
                 .Single(x => x.TaskId == id);
 
             return View(record);
@@ -81,21 +73,9 @@ namespace Mission08_group4_09.Controllers
         [HttpPost]
         public IActionResult Delete(ToDoList record)
         {
-            _context.ToDoLists.Remove(record);
-            _context.SaveChanges();
+            _repo.RemoveFromDoList(record);
 
             return RedirectToAction("Quadrants");
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

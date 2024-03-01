@@ -24,7 +24,7 @@ namespace Mission08_group4_09.Models
             _context.SaveChanges();
         }
 
-        public void EditToDoList(ToDoList updated)
+        public void UpdateToDoList(ToDoList updated)
         {
             _context.Update(updated);
             _context.SaveChanges();
