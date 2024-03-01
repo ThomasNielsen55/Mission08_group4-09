@@ -19,18 +19,14 @@ public partial class HabitContext : DbContext
 
     public virtual DbSet<ToDoList> ToDoLists { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlite("data source=Habit.sqlite");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ToDoList>(entity =>
-        {
-            entity.HasKey(e => e.TaskId);
-
-            entity.ToTable("ToDoList");
-        });
+        modelBuilder.Entity<ToDoList>().HasData(
+            new ToDoList { TaskId = 1, Task = "Home"},
+            new ToDoList { TaskId = 2, Task = "School"},
+            new ToDoList { TaskId = 3, Task = "Work"},
+            new ToDoList { TaskId = 4, Task = "Church"}
+            );
 
         OnModelCreatingPartial(modelBuilder);
     }
