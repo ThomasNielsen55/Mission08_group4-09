@@ -7,8 +7,7 @@
         public void RemoveToDoList(ToDoList delete);
         public void UpdateToDoList(ToDoList update);
         List<Category> Categories { get; }
-        //public void AddCategory(Category category);
-
+      
         
         
     }
