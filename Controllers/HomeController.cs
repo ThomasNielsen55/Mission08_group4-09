@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission08_group4_09.Models;
 using System.Diagnostics;
 
@@ -15,18 +16,26 @@ namespace Mission08_group4_09.Controllers
         }
 
         public IActionResult Index()
-        {
+        {   
+
             return View("Quadrants");
         }
 
         [HttpGet]
         public IActionResult AddEdit()
         {
-            return View();
+            ViewBag.categories = _context.Categories.ToList();
+
+            return View("AddEdit", new ToDoList());
         }
         [HttpPost]
         public IActionResult AddEdit(ToDoList t)
         {
+            if (t.CategoryId == null)
+            {
+                ViewBag.categories = _context.Categories.ToList();
+                return View(t);
+            }
             if (ModelState.IsValid)
             {
                 _context.ToDoLists.Add(t);
@@ -36,13 +45,13 @@ namespace Mission08_group4_09.Controllers
             }
             else
             {
+                ViewBag.categories = _context.Categories.ToList();
                 return View(t);
             }
         }
         public IActionResult ShowMovies()
         {
-            var items = _context.ToDoLists.ToList();
-
+            var items = _context.ToDoLists.Include("Category").ToList();
 
             return View(items);
         }
