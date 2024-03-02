@@ -1,4 +1,4 @@
-using AspNetCore;
+//using AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08_group4_09.Models;
@@ -32,11 +32,11 @@ namespace Mission08_group4_09.Controllers
         [HttpPost]
         public IActionResult AddEdit(ToDoList t)
         {
-            if (t.CategoryId == null)
-            {
-                ViewBag.categories = _repo.Categories.ToList();
-                return View(t);
-            }
+            //if (t.CategoryId == null)
+            //{
+            //    ViewBag.categories = _repo.Categories.ToList();
+            //    return View(t);
+            //}
             if (ModelState.IsValid)
             {
                 _repo.AddToDoList(t);
@@ -46,7 +46,7 @@ namespace Mission08_group4_09.Controllers
             else
             {
                 ViewBag.categories = _repo.Categories.ToList();
-                return View("Quadrants");
+                return View(t);
             }
         }
         [HttpGet]
@@ -72,7 +72,7 @@ namespace Mission08_group4_09.Controllers
             return View(record);
         }
         [HttpPost]
-        public IActionResult Delete(ToDoList record);
+        public IActionResult Delete(ToDoList record)
         {
             _repo.RemoveToDoList(record);
 
