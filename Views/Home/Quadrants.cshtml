@@ -38,7 +38,7 @@
                 Not Urgent & Important
             </div>
             <div class="quadrant-content">
-                @foreach (var x in Model.Where(x => x.Quadrant == 2))
+                @foreach (var x in Model.Where(x => x.Quadrant == 2 && x.Completed == 0))
                 {
                     <ul>
                         <li>
@@ -65,7 +65,7 @@
                 Urgent & Not Important
             </div>
             <div class="quadrant-content">
-                @foreach (var x in Model.Where(x => x.Quadrant == 3))
+                @foreach (var x in Model.Where(x => x.Quadrant == 3 && x.Completed == 0))
                 {
                     <ul>
                         <li>
@@ -90,7 +90,7 @@
                 Not Urgent & Not Important
             </div>
             <div class="quadrant-content">
-                @foreach (var x in Model.Where(x => x.Quadrant == 4))
+                @foreach (var x in Model.Where(x => x.Quadrant == 4 && x.Completed == 0))
                 {
                     <ul>
                         <li>
