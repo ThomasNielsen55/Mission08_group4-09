@@ -13,15 +13,15 @@
 }
 .not-urgent-important {
     /* yellow */
-    background-color: #ffeb3b;
+    background-color: #5eba7d;
 }
 .urgent-not-important {
     /* yellow */
-    background-color: #ffeb3b;
+    background-color: #5eba7d;
 }
 
 .not-urgent-not-important {
     /* red */
-    background-color: #ff5e5e;
+    background-color: #5eba7d;
 }
 
