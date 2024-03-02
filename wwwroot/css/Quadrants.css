@@ -12,16 +12,16 @@
     background-color: #5eba7d;
 }
 .not-urgent-important {
-    /* yellow */
-    background-color: #ffeb3b;
+    /* green */
+    background-color: #5eba7d;
 }
 .urgent-not-important {
-    /* yellow */
-    background-color: #ffeb3b;
+    /* green */
+    background-color: #5eba7d;
 }
 
 .not-urgent-not-important {
-    /* red */
-    background-color: #ff5e5e;
+    /* green */
+    background-color: #5eba7d;
 }
 
