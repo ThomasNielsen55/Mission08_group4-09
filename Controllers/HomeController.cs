@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08_group4_09.Models;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Mission08_group4_09.Controllers
 {
@@ -66,7 +67,10 @@ namespace Mission08_group4_09.Controllers
         public IActionResult Edit(ToDoList updated)
         {
             _repo.UpdateToDoList(updated);
-            return RedirectToAction("Index");
+
+            var tasks = _repo.ToDoLists.ToList();
+
+            return RedirectToAction("Index", tasks);
         }
         [HttpPost]
         public IActionResult Delete(int id)
