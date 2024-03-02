@@ -78,7 +78,7 @@ namespace Mission08_group4_09.Controllers
 
             var tasks = _repo.ToDoLists.ToList();
 
-            return RedirectToAction("Quadrants", tasks);
+            return RedirectToAction("Index", tasks);
         }
         //[HttpPost]
         //public IActionResult Delete(ToDoList record)
