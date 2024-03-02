@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<ToDoList>
+
 <link href="~/css/quadrants.css" rel="stylesheet" />
 
 <div class="container">
@@ -10,28 +12,63 @@
                 Urgent & Important
             </div>
             <div class="quadrant-content">
-                <ul>
-                    <li>Emergencies</li>
-                    <li>Crisis</li>
-                    <li>other stuff</li>
-                </ul>
+                @foreach (var x in Model.Where(x => x.Quadrant == 1))
+                {
+                    <ul>
+                        <li>@x.Task</li>
+                        <li>@x.Quadrant</li>
+                    </ul>
+                }
             </div>
         </div>
+
+
         <div class="col-md-6">
             <div class="custom-block not-urgent-important">
                 Not Urgent & Important
             </div>
+            <div class="quadrant-content">
+                @foreach (var x in Model.Where(x => x.Quadrant == 2))
+                {
+                    <ul>
+                        <li>@x.Task</li>
+                        <li>@x.Quadrant</li>
+                    </ul>
+                }
+            </div>
         </div>
     </div>
+
+
     <div class="row">
         <div class="col-md-6">
             <div class="custom-block urgent-not-important">
                 Urgent & Not Important
             </div>
+            <div class="quadrant-content">
+                @foreach (var x in Model.Where(x => x.Quadrant == 3))
+                {
+                    <ul>
+                        <li>@x.Task</li>
+                        <li>@x.Quadrant</li>
+                    </ul>
+                }
+            </div>
         </div>
+
+
         <div class="col-md-6">
             <div class="custom-block not-urgent-not-important">
                 Not Urgent & Not Important
+            </div>
+            <div class="quadrant-content">
+                @foreach (var x in Model.Where(x => x.Quadrant == 4))
+                {
+                    <ul>
+                        <li>@x.Task</li>
+                        <li>@x.Quadrant</li>
+                    </ul>
+                }
             </div>
         </div>
     </div>
