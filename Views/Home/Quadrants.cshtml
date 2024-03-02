@@ -12,7 +12,7 @@
                 Urgent & Important
             </div>
             <div class="quadrant-content">
-                @foreach (var x in Model.Where(x => x.Quadrant == 1))
+                @foreach (var x in Model.Where(x => x.Quadrant == 1 && x.Completed == 0))
                 {
                     <ul>
                         <li>
