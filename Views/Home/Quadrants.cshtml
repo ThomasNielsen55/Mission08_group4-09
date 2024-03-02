@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="custom-block urgent-important">
-                Q1:  Urgent & Important
+                Urgent & Important
             </div>
             <div class="quadrant-content">
                 @foreach (var x in Model.Where(x => x.Quadrant == 1 && x.Completed == 0))
@@ -38,7 +38,7 @@
 
         <div class="col-md-6">
             <div class="custom-block not-urgent-important">
-                Q2:  Not Urgent & Important
+                Not Urgent & Important
             </div>
             <div class="quadrant-content">
                 @foreach (var x in Model.Where(x => x.Quadrant == 2 && x.Completed == 0))
@@ -65,7 +65,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="custom-block urgent-not-important">
-                Q3:  Urgent & Not Important
+                Urgent & Not Important
             </div>
             <div class="quadrant-content">
                 @foreach (var x in Model.Where(x => x.Quadrant == 3 && x.Completed == 0))
@@ -90,7 +90,7 @@
 
         <div class="col-md-6">
             <div class="custom-block not-urgent-not-important">
-                Q4:  Not Urgent & Not Important
+                Not Urgent & Not Important
             </div>
             <div class="quadrant-content">
                 @foreach (var x in Model.Where(x => x.Quadrant == 4 && x.Completed == 0))
