@@ -68,7 +68,7 @@ namespace Mission08_group4_09.Controllers
             _repo.UpdateToDoList(updated);
             return RedirectToAction("Index");
         }
-        [HttpGet]
+        [HttpPost]
         public IActionResult Delete(int id)
         {
             var record = _repo.ToDoLists
@@ -80,14 +80,19 @@ namespace Mission08_group4_09.Controllers
 
             return RedirectToAction("Index", tasks);
         }
-        //[HttpPost]
-        //public IActionResult Delete(ToDoList record)
-        //{
+        [HttpPost]
+        public IActionResult Complete(int id)
+        {
+            
+            var record = _repo.ToDoLists
+                .Single(x => x.TaskId == id);
 
-        //    var tasks = _repo.ToDoLists.ToList();
+            record.Completed = 1;
 
+            var tasks = _repo.ToDoLists.ToList();
 
-        //    return RedirectToAction("Quadrants", tasks);
-        //}
+            return RedirectToAction("Index", tasks);
+        }
+       
     }
 }
