@@ -55,6 +55,8 @@ namespace Mission08_group4_09.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.categories = _repo.Categories.ToList();
+
             var record = _repo.ToDoLists
                 .Single(x => x.TaskId == id);
 
