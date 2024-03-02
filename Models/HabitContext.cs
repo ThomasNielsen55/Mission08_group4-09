@@ -17,11 +17,11 @@ public partial class HabitContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ToDoList>().HasData(
-            new ToDoList { TaskId = 1, Task = "Home" },
-            new ToDoList { TaskId = 2, Task = "School" },
-            new ToDoList { TaskId = 3, Task = "Work" },
-            new ToDoList { TaskId = 4, Task = "Church" }
+        modelBuilder.Entity<Category>().HasData(
+            new Category { CategoryId = 1, Categories = "Home" },
+            new Category { CategoryId = 2, Categories = "School" },
+            new Category { CategoryId = 3, Categories = "Work" },
+            new Category { CategoryId = 4, Categories = "Church" }
             );
 
         OnModelCreatingPartial(modelBuilder);

@@ -1,3 +1,4 @@
+using AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08_group4_09.Models;
@@ -45,7 +46,7 @@ namespace Mission08_group4_09.Controllers
             else
             {
                 ViewBag.categories = _repo.Categories.ToList();
-                return View(t);
+                return View("Quadrants");
             }
         }
         [HttpGet]
@@ -71,7 +72,7 @@ namespace Mission08_group4_09.Controllers
             return View(record);
         }
         [HttpPost]
-        public IActionResult Delete(ToDoList record)
+        public IActionResult Delete(ToDoList record);
         {
             _repo.RemoveToDoList(record);
 
