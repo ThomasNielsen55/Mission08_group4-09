@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Mission08_group4_09.Models;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Mission08_group4_09.Controllers
 {
@@ -68,11 +69,10 @@ namespace Mission08_group4_09.Controllers
         {
             _repo.UpdateToDoList(updated);
 
-            var tasks = _repo.ToDoLists.ToList();
 
-            return RedirectToAction("Index", tasks);
+            return RedirectToAction("Index");
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Delete(int id)
         {
             var record = _repo.ToDoLists
@@ -80,11 +80,10 @@ namespace Mission08_group4_09.Controllers
 
             _repo.RemoveToDoList(record);
 
-            var tasks = _repo.ToDoLists.ToList();
 
-            return RedirectToAction("Index", tasks);
+            return RedirectToAction("Index");
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Complete(int id)
         {
             
@@ -93,9 +92,11 @@ namespace Mission08_group4_09.Controllers
 
             record.Completed = 1;
 
-            var tasks = _repo.ToDoLists.ToList();
+            _repo.UpdateToDoList(record);
 
-            return RedirectToAction("Index", tasks);
+
+
+            return RedirectToAction("Index");
         }
        
     }
