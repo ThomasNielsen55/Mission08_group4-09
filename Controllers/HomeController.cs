@@ -17,9 +17,10 @@ namespace Mission08_group4_09.Controllers
         }
 
         public IActionResult Index()
-        {   
+        {
+            var tasks = _repo.ToDoLists.ToList();
 
-            return View("Quadrants");
+            return View("Quadrants", tasks);
         }
 
         [HttpGet]
@@ -41,7 +42,9 @@ namespace Mission08_group4_09.Controllers
             {
                 _repo.AddToDoList(t);
 
-                return View("Quadrants");
+                var tasks = _repo.ToDoLists.ToList();
+
+                return View("Quadrants", tasks);
             }
             else
             {
@@ -52,6 +55,8 @@ namespace Mission08_group4_09.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewBag.categories = _repo.Categories.ToList();
+
             var record = _repo.ToDoLists
                 .Single(x => x.TaskId == id);
 
@@ -61,7 +66,7 @@ namespace Mission08_group4_09.Controllers
         public IActionResult Edit(ToDoList updated)
         {
             _repo.UpdateToDoList(updated);
-            return RedirectToAction("Quadrants");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Delete(int id)
@@ -69,14 +74,20 @@ namespace Mission08_group4_09.Controllers
             var record = _repo.ToDoLists
                 .Single(x => x.TaskId == id);
 
-            return View(record);
-        }
-        [HttpPost]
-        public IActionResult Delete(ToDoList record)
-        {
             _repo.RemoveToDoList(record);
 
-            return RedirectToAction("Quadrants");
+            var tasks = _repo.ToDoLists.ToList();
+
+            return RedirectToAction("Index", tasks);
         }
+        //[HttpPost]
+        //public IActionResult Delete(ToDoList record)
+        //{
+
+        //    var tasks = _repo.ToDoLists.ToList();
+
+
+        //    return RedirectToAction("Quadrants", tasks);
+        //}
     }
 }

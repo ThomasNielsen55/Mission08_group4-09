@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model List<ToDoList>
+
 <link href="~/css/quadrants.css" rel="stylesheet" />
 
 <div class="container">
@@ -10,28 +12,100 @@
                 Urgent & Important
             </div>
             <div class="quadrant-content">
-                <ul>
-                    <li>Emergencies</li>
-                    <li>Crisis</li>
-                    <li>other stuff</li>
-                </ul>
+                @foreach (var x in Model.Where(x => x.Quadrant == 1 && x.Completed == 0))
+                {
+                    <ul>
+                        <li>
+                            <div style="display: inline-block; margin-right: 10px;">
+                                @x.Task
+                            </div>
+                            <div style="display: inline-block;">
+                                <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a>
+                            </div>
+                            <div style="display: inline-block; margin-left: 10px;">
+                                <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a>
+                            </div>
+                        </li>
+                    </ul>
+                }
             </div>
+
         </div>
+
+
         <div class="col-md-6">
             <div class="custom-block not-urgent-important">
                 Not Urgent & Important
             </div>
+            <div class="quadrant-content">
+                @foreach (var x in Model.Where(x => x.Quadrant == 2 && x.Completed == 0))
+                {
+                    <ul>
+                        <li>
+                            <div style="display: inline-block; margin-right: 10px;">
+                                @x.Task
+                            </div>
+                            <div style="display: inline-block;">
+                                <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a>
+                            </div>
+                            <div style="display: inline-block; margin-left: 10px;">
+                                <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a>
+                            </div>
+                        </li>
+                    </ul>
+                }
+            </div>
         </div>
     </div>
+
+
     <div class="row">
         <div class="col-md-6">
             <div class="custom-block urgent-not-important">
                 Urgent & Not Important
             </div>
+            <div class="quadrant-content">
+                @foreach (var x in Model.Where(x => x.Quadrant == 3 && x.Completed == 0))
+                {
+                    <ul>
+                        <li>
+                            <div style="display: inline-block; margin-right: 10px;">
+                                @x.Task
+                            </div>
+                            <div style="display: inline-block;">
+                                <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a>
+                            </div>
+                            <div style="display: inline-block; margin-left: 10px;">
+                                <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a>
+                            </div>
+                        </li>
+                    </ul>
+                }
+            </div>
         </div>
+
+
         <div class="col-md-6">
             <div class="custom-block not-urgent-not-important">
                 Not Urgent & Not Important
+            </div>
+            <div class="quadrant-content">
+                @foreach (var x in Model.Where(x => x.Quadrant == 4 && x.Completed == 0))
+                {
+                    <ul>
+                        <li>
+                            <div style="display: inline-block; margin-right: 10px;">
+                                @x.Task
+                            </div>
+                            <div style="display: inline-block;">
+                                <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a>
+                            </div>
+                            <div style="display: inline-block; margin-left: 10px;">
+                                <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a>
+                            </div>
+                        </li>
+                    </ul>
+                }
             </div>
         </div>
     </div>
