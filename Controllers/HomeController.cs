@@ -1,3 +1,4 @@
+//using AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08_group4_09.Models;
@@ -31,11 +32,11 @@ namespace Mission08_group4_09.Controllers
         [HttpPost]
         public IActionResult AddEdit(ToDoList t)
         {
-            if (t.CategoryId == null)
-            {
-                ViewBag.categories = _repo.Categories.ToList();
-                return View(t);
-            }
+            //if (t.CategoryId == null)
+            //{
+            //    ViewBag.categories = _repo.Categories.ToList();
+            //    return View(t);
+            //}
             if (ModelState.IsValid)
             {
                 _repo.AddToDoList(t);

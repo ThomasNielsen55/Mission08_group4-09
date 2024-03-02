@@ -15,19 +15,19 @@ namespace Mission08_group4_09.Models
 
         public void AddToDoList(ToDoList toDoList)
         {
-            _context.Add(toDoList);
+            _context.ToDoLists.Add(toDoList);
             _context.SaveChanges();
         }
 
         public void UpdateToDoList(ToDoList updated)
         {
-            _context.Update(updated);
+            _context.ToDoLists.Update(updated);
             _context.SaveChanges();
         }
 
         public void RemoveToDoList(ToDoList delete)
         {
-            _context.Remove(delete);
+            _context.ToDoLists.Remove(delete);
             _context.SaveChanges();
         }
 
